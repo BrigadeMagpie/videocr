@@ -4,11 +4,12 @@ from .video import Video
 
 def get_subtitles(
         video_path: str, lang='eng', time_start='0:00', time_end='',
-        conf_threshold=65, sim_threshold=90, use_fullframe=False) -> str:
+        conf_threshold=65, sim_threshold=90, use_fullframe=False,
+        width_boundary: tuple=None, height_boundary: tuple=None) -> str:
     utils.download_lang_data(lang)
 
     v = Video(video_path)
-    v.run_ocr(lang, time_start, time_end, conf_threshold, use_fullframe)
+    v.run_ocr(lang, time_start, time_end, conf_threshold, use_fullframe, width_boundary, height_boundary)
     return v.get_subtitles(sim_threshold)
 
 

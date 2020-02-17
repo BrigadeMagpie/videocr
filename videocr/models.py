@@ -43,7 +43,7 @@ class PredictedFrame:
 
         self.confidence = sum(word.confidence for word in self.words)
 
-        self.text = ' '.join(word.text for word in self.words)
+        self.text = ''.join(word.text for word in self.words)
         # remove chars that are obviously ocr errors
         table = str.maketrans('|', 'I', '<>{}[];`@#$%^*_=~\\')
         self.text = self.text.translate(table).replace(' \n ', '\n').strip()
